@@ -1,5 +1,5 @@
 (function() {
-  // ======== HAMBURGER MENU ANIMATION ======== //
+  // HAMBURGER MENU ANIMATION //
   // Find the navigation hamburger button
   const hamburgerElement = document.querySelectorAll('input[type=checkbox]')[0];
 
@@ -25,7 +25,7 @@
     );
   });
 
-  // ======== SCROLL ANIMATION ======== //
+  // SCROLL ANIMATION //
   // Recursive scroll function
   const scrollTo = (element, to, duration) => {
     if (duration <= 0) {
@@ -46,15 +46,17 @@
   // Save DOM elements that can be scrolled to
   let targetElements = {};
   (function() {
+    const cover = document.getElementById('cover');
     const myWork = document.getElementById('my-work');
     const contact = document.getElementById('contact');
     targetElements = {
+      cover: cover,
       'my-work': myWork,
       contact: contact
     };
   })();
 
-  // ======== NAVIGATION ANIMATION ======== //
+  // NAVIGATION ANIMATION //
   // Select links with scroll action
   const scrollElements = document.getElementsByClassName('scroll');
 
@@ -68,22 +70,22 @@
     });
   });
 
-  // ======== BACK TO TOP ANIMATION ======== //
-  const amountScrolled = 2500;
-  const backToTopButton = document.getElementById('back-to-top');
+  // // BACK TO TOP ANIMATION //
+  // const amountScrolled = 2500;
+  // const backToTopButton = document.getElementById('back-to-top');
 
-  // Show or hide 'back to top' arrow button
-  window.addEventListener('scroll', event => {
-    if (window.scrollY > amountScrolled) {
-      backToTopButton.style.opacity = '0.6';
-    } else {
-      backToTopButton.style.opacity = '0';
-    }
-  });
+  // // Show or hide 'back to top' arrow button
+  // window.addEventListener('scroll', event => {
+  //   if (window.scrollY > amountScrolled) {
+  //     backToTopButton.style.opacity = '0.6';
+  //   } else {
+  //     backToTopButton.style.opacity = '0';
+  //   }
+  // });
 
   // Scroll to target
   backToTopButton.addEventListener('click', event => {
     event.preventDefault();
-    scrollTo(document.body, targetElements['my-work'].offsetTop, 400);
+    scrollTo(document.body, targetElements[cover].offsetTop, 400);
   });
 })();
