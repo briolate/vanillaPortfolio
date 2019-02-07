@@ -1,0 +1,354 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Raleway', Arial, sans-serif;
+  letter-spacing: 0.1em;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+  font-weight: 300;
+}
+
+a {
+  color: #bcbcbc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #707070;
+}
+
+/* NAVIGATION */
+nav {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 3.1em;
+  background: #fff;
+  z-index: 1;
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+}
+
+#logo-container {
+  position: fixed;
+  left: 0.4em;
+}
+
+#logo-container a {
+  display: block;
+  font-size: 1.4em;
+  padding: 0.5em 0.5em 0.3em;
+  color: #707070;
+}
+
+#menu-toggle {
+  user-select: none;
+}
+
+#menu {
+  display: flex;
+}
+
+#menu li {
+  list-style: none;
+}
+
+@media screen and (max-width: 767px) {
+  #menu-toggle {
+    position: fixed;
+    display: block;
+    right: 0.8em;
+  }
+
+  #menu-toggle > input {
+    position: absolute;
+    right: 0em;
+    top: 0em;
+    width: 2.9em;
+    height: 2.9em;
+    cursor: pointer;
+    opacity: 0; /* Hide the checkbox */
+    z-index: 3; /* and place it over the hamburger spans */
+    -webkit-touch-callout: none;
+  }
+
+  #menu-toggle span {
+    position: relative;
+    display: block;
+    top: 7px;
+    width: 36px;
+    height: 1px;
+    margin-bottom: 12px;
+    border-radius: 0.1em;
+    background: #707070;
+    transform-origin: 0px 0px;
+    z-index: 2;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  }
+
+  /* Rotate the top hamburger span clockwise */
+  #menu-toggle input:checked ~ span:nth-child(2) {
+    transform: rotate(45deg);
+  }
+
+  /* Hide the middle hamburger span */
+  #menu-toggle input:checked ~ span:nth-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+
+  /* Rotate the bottom hamburger span anti-clockwise */
+  #menu-toggle input:checked ~ span:nth-child(4) {
+    transform: rotate(-45deg);
+  }
+
+  #menu {
+    position: fixed;
+    top: 3.1em;
+    height: 100vh;
+    width: 60vw;
+    right: -60vw; /* Hide the mobile menu on the right */
+    flex-direction: column;
+    padding-top: 0.5em;
+    padding-left: 1.5em;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  #menu-toggle input:checked ~ #menu {
+    /* Slide the mobile menu from right to left */
+    transform: translate(-60vw, 0);
+  }
+
+  #menu li {
+    padding: 1em 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #menu a {
+    font-size: 1.3em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  nav {
+    justify-content: center;
+  }
+
+  #logo-container {
+    left: 1.2em;
+  }
+
+  #logo-container a {
+    padding-top: 0.4em;
+  }
+
+  #menu-toggle > input,
+  #menu-toggle > span {
+    display: none;
+  }
+
+  #menu > li {
+    margin-top: 0.2em;
+    padding: 0.5em 1em;
+  }
+}
+
+/* MAIN */
+main {
+  transition: all 0.4s ease-out;
+}
+
+.dark {
+  filter: brightness(50%);
+  background: #eee;
+}
+
+/* MY WORK */
+article {
+  display: flex;
+  flex-direction: column;
+}
+
+/* MY WORK: INTRODUCTION */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('../img/portfolio-pic.jpg') no-repeat center center;
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#introduction {
+  width: 90%;
+  padding-top: 8.5em;
+  padding-bottom: 5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 499px) {
+  #introduction {
+    /* Extra padding so that image fills full height */
+    padding-bottom: 6em;
+  }
+}
+
+#introduction h1 {
+  margin-bottom: 0.9em;
+  font-size: 2.3em;
+}
+
+#introduction p {
+  margin-bottom: 1.1em;
+  line-height: 1.4em;
+  font-size: 0.9em;
+}
+
+/* Small Devices, Tablets */
+@media screen and (min-width: 768px) {
+  #introduction {
+    width: 70%;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media screen and (min-width: 992px) {
+  #introduction {
+    width: 60%;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  #introduction {
+    width: 40%;
+  }
+}
+
+/* MY WORK */
+#front-end-portfolio {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6em;
+}
+
+#front-end-portfolio h2 {
+  flex-basis: 100%;
+  margin-bottom: 2em;
+  color: #303030;
+  text-align: center;
+}
+
+.one-tile {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 500px) {
+  .one-tile {
+    width: 50%;
+  }
+}
+
+.one-tile:hover .img-front-end-portfolio {
+  transform: scale(1.1);
+  filter: brightness(30%);
+}
+
+.img-front-end-portfolio {
+  /* Prevent white space under image */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: auto;
+  /* Prevent background from showing up on edges when */
+  /* hovering between images */
+  transform: scale(1.01);
+  transition: all 300ms ease-out;
+}
+
+.one-tile:hover h3 {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 300ms ease-out 0ms;
+}
+
+.one-tile:hover p {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 300ms ease-out 200ms;
+}
+
+figcaption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+figcaption h3 {
+  padding-bottom: 0.5em;
+  transform: translateY(50%);
+  color: #ffffff;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: all 100ms ease-out 0ms;
+}
+
+figcaption p {
+  transform: translateY(50%);
+  color: #ffffff;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: all 100ms ease-out 0ms;
+}
+
+/* CONTACT */
+#contact {
+  padding-top: 12em;
+  height: 100vh;
+  text-align: center;
+}
+#contact h2 {
+  margin-bottom: 2em;
+  color: #303030;
+}
+#contact p {
+  margin-bottom: 0.7em;
+  font-size: 0.9em;
+  line-height: 2em;
+}
+#contact .fa {
+  padding-right: 0.8em;
+  font-size: 1.3em;
+}
